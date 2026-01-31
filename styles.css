@@ -1,3 +1,17 @@
+@font-face {
+  font-family: "Exo2";
+  src: 
+    url("./assets/fonts/Exo2-Regular.woff2") format("woff2"),
+    url("./assets/fonts/Exo2-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Roboto";
+  src:
+    url("./assets/fonts/Roboto-Regular.woff2") format("woff2"),
+    url("./assets/fonts/Roboto-Regular.woff") format("woff");
+}
+
 *,
 *::after,
 *::before {
@@ -10,12 +24,18 @@
   --header-card-bg: #252b3b;
   --sidebar-bg: #1a1f2e;
   --main-bg: #1e2330;
+  --primary-color: #e8e8e8;
+  --hover-color: #ffb800;
+  --active-color: #ff6b35;
 }
 
 body {
   width: 100vw;
   height: 100vh;
+  color: var(--primary-color);
+  font-family: "Roboto", system-ui, sans-serif;
 }
+
 .container {
   height: 100%;
   display: grid;
@@ -26,15 +46,69 @@ body {
     "sidebar main"
 }
 
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: all .2s ease-in-out;
+}
+
+a:hover {
+  color: var(--hover-color);
+  transition: all .2s ease-in-out;
+}
+
+a:active {
+  color: var(--active-color);
+  transition: all .1s ease-in-out;
+}
+
+/* Header */
+
 header {
   background-color: var(--header-card-bg);
   grid-area: header;
 }
 
+/* Sidebar */
+
 .sidebar {
   background-color: var(--sidebar-bg);
   grid-area: sidebar;
+  padding: 2rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, min-content);
+  align-items: start;
+  gap: 5rem;
 }
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.sidebar h1 {
+  font-family: "Exo2", system-ui, sans-serif;
+  text-transform: uppercase;
+}
+
+.sidebar ul {
+  list-style: none;
+  font-size: 1.4rem;
+}
+
+.sidebar a {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.sidebar ul li:nth-child(n+2){
+  margin-top: 1rem;
+}
+
+/* Main */ 
 
 main {
   background-color: var(--main-bg);
