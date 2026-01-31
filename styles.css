@@ -1,3 +1,42 @@
-p {
-  color: red;
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --header-card-bg: #252b3b;
+  --sidebar-bg: #1a1f2e;
+  --main-bg: #1e2330;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+}
+.container {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+  grid-template-rows: 1fr 4fr;
+  grid-template-areas:
+    "sidebar header"
+    "sidebar main"
+}
+
+header {
+  background-color: var(--header-card-bg);
+  grid-area: header;
+}
+
+.sidebar {
+  background-color: var(--sidebar-bg);
+  grid-area: sidebar;
+}
+
+main {
+  background-color: var(--main-bg);
+  grid-area: main
 }
