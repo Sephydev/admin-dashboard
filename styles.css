@@ -21,12 +21,14 @@
 }
 
 :root {
-  --header-card-bg: #252b3b;
+  --header-bg: #252b3b;
   --sidebar-bg: #1a1f2e;
   --main-bg: #1e2330;
+  --input-bg: #394157;
   --primary-color: #e8e8e8;
   --hover-color: #ffb800;
   --active-color: #ff6b35;
+  --button-color: #00d4ff;
 }
 
 body {
@@ -65,8 +67,137 @@ a:active {
 /* Header */
 
 header {
-  background-color: var(--header-card-bg);
+  background-color: var(--header-bg);
   grid-area: header;
+
+  display: grid;
+  grid-template-columns: repeat(2, min-content);
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-areas:
+    "search user-info"
+    "welcome-message btn-container";
+  justify-content: space-between;
+  padding: 0 5rem 1rem;
+  z-index: 5;
+  box-shadow: 10px 1px 10px var(--hover-color);
+}
+
+.search {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  grid-area: search;
+}
+
+.search > button,
+.user-info > button {
+  background-color: var(--header-color);
+  border: none;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.search > input {
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-bg);
+  border-radius: 20px;
+  font-size: 1rem;
+  color: #e8e8e8;
+  padding: .4rem 1rem;
+  transition: all .2s ease-in-out;
+  width: 75ch;
+}
+
+.search > input:hover {
+  border: 1px solid var(--hover-color);
+  transition: all .2s ease-in-out;
+}
+
+.search > input:focus {
+  outline: none;
+  border: 1px solid var(--active-color);
+  transition: all .2s ease-in-out;
+}
+
+.user-info {
+  grid-area: user-info;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2rem;
+}
+
+.user-info > a {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  font-size: 1.25rem;
+  letter-spacing: 1.4px;
+}
+
+.user-info div,
+.welcome-message div:first-child {
+  border-radius: 100px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.user-info div {
+  width: 60px;
+  height: 60px;
+}
+
+.welcome-message {
+  grid-area: welcome-message;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.welcome-message div:first-child {
+  width: 100px;
+  height: 100px;
+}
+
+.welcome-message div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.welcome-message div:last-child span:last-child {
+  font-size: 1.5rem;
+}
+
+.btn-container {
+  grid-area: btn-container;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.btn-container button {
+  background-color: var(--button-color);
+  border: none;
+  font-size: 1.1rem;
+  padding: .75rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-container button:hover {
+  background-color: var(--hover-color);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.btn-container button:active {
+  background-color: var(--active-color);
+  transition: all 0.2s ease-in-out;
 }
 
 /* Sidebar */
